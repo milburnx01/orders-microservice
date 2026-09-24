@@ -1,10 +1,8 @@
-package com.example.orderservice.controller;
+package com.example.orderservice.controller.impl;
 
+import com.example.orderservice.controller.UserApi;
 import com.example.orderservice.dto.UserResponse;
 import com.example.orderservice.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,24 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
-@Tag(name = "Пользователи", description = "Управление пользователями")
-
 @RestController
 @RequiredArgsConstructor
-@SecurityRequirement(name = "JWT")
 @RequestMapping("/api/users")
-public class UserController {
+public class UserController implements UserApi {
 
     private final UserService userService;
 
-    @Operation(summary = "Общий список пользователей")
     @GetMapping
+    @Override
     public List<UserResponse> findAll() {
         return userService.findAll();
     }
 
-    @Operation(summary = "Удаление пользователя")
     @DeleteMapping("/{id}")
+    @Override
     public ResponseEntity<Void> deleteById(@PathVariable UUID id) {
         userService.deleteById(id);
         return ResponseEntity.noContent().build();
