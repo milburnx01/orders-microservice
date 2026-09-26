@@ -16,3 +16,12 @@ jwt:
   secret:
     access: ${JWT_SECRET_ACCESS}
     refresh: ${JWT_SECRET_REFRESH}
+
+logging:
+  level:
+    root: info
+  file:
+    name: logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [traceId:%X{traceId}] %-5p %c{1}:%L - %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [traceId:%X{traceId}] %-5p %c{1}:%L - %m%n"

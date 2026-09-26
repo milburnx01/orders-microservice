@@ -1,0 +1,7 @@
+jwt:
+  secret:
+    access: jwtsecretaccessjwtsecretaccessjwtsecretaccess
+    refresh: jwtsecretrefreshjwtsecretrefreshjwtsecretrefresh
+spring:
+  liquibase:
+    enabled: false
